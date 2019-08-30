@@ -10,7 +10,7 @@ class SignIn extends Component {
             const formData = new FormData(form);
 
             const credentials = {
-                email: formData.get('email'),
+                userName: formData.get('user-name'),
                 password: formData.get('password')
             };
 

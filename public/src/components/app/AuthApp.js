@@ -2,6 +2,7 @@ import Component from '../Component.js';
 import store from '../../services/store.js';
 import SignUp from '../auth/SignUp.js';
 import SignIn from '../auth/SignIn.js';
+import { signUp as userSignUp, signIn as userSignIn } from '../../services/auth-api.js';
 
 function success(user) {
     store.setToken(user.token);
@@ -29,11 +30,11 @@ class AuthApp extends Component {
                     });
             }
         });
-        signInContainer.appendChild(signUp.renderDOM());
+        signUpContainer.appendChild(signUp.renderDOM());
 
         const signIn = new SignIn({
             onSignIn: credentials => {
-                error.textContent = '';
+                errors.textContent = '';
 
                 return userSignIn(credentials)
                     .then(user => {
@@ -44,6 +45,20 @@ class AuthApp extends Component {
                     });
             }
         });
+        signInContainer.appendChild(signIn.renderDOM());
+        
+        const switchToSignIn = dom.querySelector('#signin-button');
+        switchToSignIn.addEventListener('click', () => {
+            signInContainer.classList.remove('no-display');
+            signUpContainer.classList.add('no-display');
+        });
+
+        const switchToSignUp = dom.querySelector('#signup-button');
+        switchToSignUp.addEventListener('click', () => {
+            signUpContainer.classList.remove('no-display');
+            signInContainer.classList.add('no-display');
+        });
+
     }
 
     renderHTML() {
