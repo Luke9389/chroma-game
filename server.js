@@ -1,6 +1,9 @@
 // Load Environment Variables from the .env file
 require('dotenv').config();
 
+//API Service Dependencies
+const colorApi = require('./lib/the-color-api');
+
 // Application Dependencies
 const express = require('express');
 const cors = require('cors');
@@ -46,8 +49,20 @@ app.use('/api/auth', authRoutes);
 // everything that starts with "/api" below here requires an auth token!
 app.use('/api', ensureAuth);
 
+app.get('/scheme', (request, response) => {
+    colorApi.getScheme()
+        .then(chroma => {
+            response.json(chroma);
+        })
+        .catch(err => {
+            response.status(500)({
+                error: err.message || err
+            });
+        });
+});
 
 // Start the server
 app.listen(PORT, () => {
     console.log('server running on PORT', PORT);
 });
+

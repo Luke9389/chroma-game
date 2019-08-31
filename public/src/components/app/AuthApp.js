@@ -2,7 +2,7 @@ import Component from '../Component.js';
 import store from '../../services/store.js';
 import SignUp from '../auth/SignUp.js';
 import SignIn from '../auth/SignIn.js';
-import { signUp as userSignUp, signIn as userSignIn } from '../../services/auth-api.js';
+import { signUp as userSignUp, signIn as userSignIn } from '../../services/chroma-api.js';
 
 function success(user) {
     store.setToken(user.token);
@@ -64,14 +64,14 @@ class AuthApp extends Component {
     renderHTML() {
         return /*html*/`
         <div>
-            <main>
+            <main id="flex-container">
                 <p class="errors"></p>
                 <section class="no-display" id="signup-container">
                     <p class="switch">
                         <button id="signin-button">Already a user?</button>
                     </p>
                 </section>
-                <section class="no-display" id="signin-container">
+                <section class="" id="signin-container">
                     <p class="switch">
                         <button id="signup-button">Make an account</button>
                     </p>

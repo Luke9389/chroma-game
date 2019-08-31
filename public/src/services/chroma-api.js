@@ -1,6 +1,7 @@
 import store from './store.js';
 
 const URL = '/api';
+const COLOR_API = '';
 
 const token = store.getToken();
 if(!token && location.pathname !== '/index.html') {
