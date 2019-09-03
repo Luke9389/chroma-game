@@ -2,7 +2,9 @@ import Component from '../Component.js';
 import store from '../../services/store.js';
 // import Palette from '../game/Palette.js';
 // import Board from '../game/Board.js';
-// import { getColor } from '../../services/color-api.js';
+import { getColorAPI, toScheme } from '../../services/color-api.js';
+import randomizeLocation from '../game/randomize-location.js';
+import { randomColor, randomWholeNum } from '../game/randomize-location.js';
 
 class Gameplay extends Component {
     onRender(dom) {
@@ -29,16 +31,19 @@ class Gameplay extends Component {
                 }
             });
         });
-        // function loadColors() {
-        //     getColor()
-        //         .then(colorList => {
-        //             colorList.forEach(colorObject => {
-        //                 colorObject.location = 'n/a';
-        //             });
-        //             palette.update({ colorList });
-        //         });
-        // }
-        // loadColors();
+        const randColor = randomColor();
+        let numOfColors = randomWholeNum(2) + 5;
+
+        function loadColors() {
+            getColorAPI(randColor, numOfColors)
+                .then(rawData => {
+                    const scheme = toScheme(rawData);
+                    const randomScheme = randomizeLocation(scheme);
+                    console.log(randomScheme);
+                });     
+        }
+        loadColors();
+        
     }
 
     renderHTML() {

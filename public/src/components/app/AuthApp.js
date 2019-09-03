@@ -3,21 +3,16 @@ import store from '../../services/store.js';
 import SignUp from '../auth/SignUp.js';
 import SignIn from '../auth/SignIn.js';
 import { signUp as userSignUp, signIn as userSignIn } from '../../services/auth-api.js';
-import { toScheme, getColor } from '../../services/color-api.js';
+
 
 function success(user) {
     store.setToken(user.token);
     const searchParams = new URLSearchParams(location.search);
-    location = searchParams.get('redirect') || './game.html';
+    location = searchParams.get('redirect') || './gameplay.html';
 }
 
 class AuthApp extends Component {
     onRender(dom) {
-        getColor()
-            .then(res => {
-                console.log(toScheme(res));
-            });
-
         const errors = dom.querySelector('.errors');
         const signUpContainer = dom.querySelector('#signup-container');
         const signInContainer = dom.querySelector('#signin-container');

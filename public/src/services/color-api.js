@@ -30,7 +30,7 @@ function fetchWithError(url, options) {
 }
 
 
-export function getColor(color, count) {
+export function getColorAPI(color, count) {
     const url = `${COLOR_API}?rgb=${color}&count=${count}&mode=monochrome`;
     return fetchWithError(url);
 }
