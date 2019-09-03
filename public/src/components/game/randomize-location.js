@@ -23,8 +23,15 @@ function randomizeLocation(arr) {
     return random;
 }
 
-function randomWholeNum(num) {
+export function randomWholeNum(num) {
     return Math.floor(Math.random() * num);
+}
+
+export function randomColor() {
+    const r = Math.floor(Math.random() * 220);
+    const g = Math.floor(Math.random() * 220);
+    const b = Math.floor(Math.random() * 220);
+    return `rgb(${r + 50}, ${g + 50}, ${b + 50})`;
 }
 
 export default randomizeLocation;
