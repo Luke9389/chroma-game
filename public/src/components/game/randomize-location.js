@@ -30,7 +30,7 @@ export function randomColor() {
     const r = Math.floor(Math.random() * 220);
     const g = Math.floor(Math.random() * 220);
     const b = Math.floor(Math.random() * 220);
-    return `rgb(${r + 30}, ${g + 30}, ${b + 30})`;
+    return `rgb(${r + 30},${g + 30},${b + 30})`;
 }
 
 export default randomizeLocation;
