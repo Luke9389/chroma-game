@@ -1,0 +1,1 @@
+import './rendomize-location.test.js';

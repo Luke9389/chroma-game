@@ -1,0 +1,17 @@
+#palette-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 50vw;
+    margin: auto;
+    margin-top: 2rem;
+}
+
+#palette-section button {
+    border: solid 1px white;
+    width: 2.5rem;
+    height: 2.5rem;
+    margin: .2rem;
+    border-radius: 15%;
+    background-color: rgba(241, 166, 166, 0);
+}
