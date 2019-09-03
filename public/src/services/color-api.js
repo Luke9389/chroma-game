@@ -1,6 +1,6 @@
 import store from './store.js';
 
-const COLOR_API = 'http://www.thecolorapi.com/scheme';
+const COLOR_API = 'https://www.thecolorapi.com/scheme';
 
 const token = store.getToken();
 if(!token && location.pathname !== '/index.html') {
