@@ -1,0 +1,35 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    background-color: black;
+}
+
+main {
+    display: grid;
+    grid-template-rows:85% 15%;
+    grid-template-areas: "gameplay" "nav";
+    height: 100vh;
+}
+
+#gameplay {
+    grid-area: gameplay;
+    display: grid;
+    grid-template-rows: 25% 75%;
+    grid-template-areas: "palette" "board";
+}
+
+#nav {
+    grid-area: nav;
+    border: solid white;
+}
+
+#palette-section {
+    grid-area: palette;
+}
+
+#board-section {
+    grid-area: board;
+}

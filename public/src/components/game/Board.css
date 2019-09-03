@@ -1,0 +1,17 @@
+#board-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 20vw;
+    margin: auto;
+    margin-top: 1rem;
+}
+
+#board-section button {
+    border: solid 1px white;
+    width: 2.5rem;
+    height: 2.5rem;
+    margin: .2rem;
+    border-radius: 15%;
+    background-color: rgba(241, 166, 166, 0);
+}
