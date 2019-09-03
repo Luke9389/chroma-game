@@ -8,7 +8,7 @@ import { signUp as userSignUp, signIn as userSignIn } from '../../services/auth-
 function success(user) {
     store.setToken(user.token);
     const searchParams = new URLSearchParams(location.search);
-    location = searchParams.get('redirect') || './gameplay.html';
+    location = searchParams.get('redirect') || '/gameplay.html';
 }
 
 class AuthApp extends Component {
