@@ -11,6 +11,14 @@ class Gameplay extends Component {
         function loadColors() {
             const randColor = randomColor();
             const numOfColors = randomWholeNum(2) + 5;
+            for(let i = 0; i < numOfColors; i++) {
+                const boardButton = document.createElement('button');
+                boardButton.id = `b${i}`;
+                boardButton.classList.add('board-button');
+                boardButton.style = 'background:black';
+                const board = dom.querySelector('#board-section');
+                board.appendChild(boardButton);
+            }
             getColorAPI(randColor, numOfColors)
                 .then(rawData => {
                     const scheme = toScheme(rawData);
@@ -19,7 +27,7 @@ class Gameplay extends Component {
                         const colorObject = randomScheme[i];
                         const paletteLocation = dom.querySelector('#palette-section');
                         const button = document.createElement('button');
-                        button.id = colorObject.location; 
+                        button.id = colorObject.location;
                         button.classList.add('palette-button');
                         button.style = `background:${colorObject.color}`;
                         button.addEventListener('click', () => {
@@ -43,9 +51,9 @@ class Gameplay extends Component {
                             }
                         });
                         paletteLocation.appendChild(button);
-        
+
                     }
-                });     
+                });
         }
         loadColors();
         const buttonArray = dom.querySelectorAll('[class$="button"]');
@@ -70,9 +78,9 @@ class Gameplay extends Component {
                     store.saveLocation(button.id);
                 }
             });
-            
+
         });
-        
+
     }
 
     renderHTML() {
@@ -81,15 +89,7 @@ class Gameplay extends Component {
               <section id="palette-section">
               </section>
               <section id="board-section">
-                <button id="b0" class="board-button"></button>
-                <button id="b1" class="board-button"></button>
-                <button id="b2" class="board-button"></button>
-                <button id="b3" class="board-button"></button>
-                <button id="b4" class="board-button"></button>
-                <button id="b5" class="board-button"></button>
-                <button id="b6" class="board-button"></button>
-                <button id="b7" class="board-button"></button>
-              <section>
+              </section>
             </section>
         `;
     }
