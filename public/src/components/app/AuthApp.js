@@ -70,9 +70,13 @@ class AuthApp extends Component {
             getColorAPI(randomRBG, 6)
                 .then(rawData => {
                     const colorArray = toScheme(rawData);
-                    console.log(colorArray);
-                    backgroundGradient.style = `background:-webkit-linear-gradient(180deg, ${colorArray[0].color} 0%, ${colorArray[5].color} 100%);`;
-                    console.log(backgroundGradient);
+                    backgroundGradient.style = `background: -webkit-linear-gradient(180deg, ${colorArray[0].color} 0%, ${colorArray[5].color} 100%);`;
+                    colorArray.forEach((colorObj, i) => {
+                        const chromaLetter = dom.querySelector(`#letter${i}`);
+                        const chromaLetter2 = dom.querySelector(`#aletter${i}`);
+                        chromaLetter.style = `color:${colorObj.color}`; 
+                        chromaLetter2.style = `color:${colorObj.color}`;  
+                    });
                 });
         }
         loadGradient();
