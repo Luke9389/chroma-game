@@ -2,6 +2,7 @@ const TOKEN_KEY = 'token';
 const savedColor = 'savedColor';
 const savedLocation = 'savedLocation';
 const userId = 'userId';
+const savedScheme = 'savedScheme';
 
 export default {
     getToken() {
@@ -40,5 +41,13 @@ export default {
     removeLocation() {
         localStorage.removeItem(savedLocation);
     },
+    saveScheme(scheme) {
+        const json = JSON.stringify(scheme);
+        localStorage.setItem(savedScheme, json);
+    },
+    getScheme() {
+        const data = localStorage.getItem(savedScheme);
+        return JSON.parse(data);
+    }
 };
 

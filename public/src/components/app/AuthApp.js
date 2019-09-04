@@ -77,6 +77,7 @@ class AuthApp extends Component {
                         chromaLetter.style = `color:${colorObj.color}`; 
                         chromaLetter2.style = `color:${colorObj.color}`;  
                     });
+
                 });
         }
         loadGradient();

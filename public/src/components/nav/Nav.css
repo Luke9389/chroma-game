@@ -1,0 +1,23 @@
+#nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 5rem;
+}
+
+.nav-button {
+    height: 4rem;
+    width: 4rem;
+    font-size: 3rem;
+    color: white;
+    background-color: transparent;
+    border: none;
+    /* border-radius: 50%; */
+    transition: all .2s ease-in-out;
+}
+
+.nav-button:hover {
+    cursor: pointer;
+    text-shadow: 0px 0px 12px rgb(201, 201, 201);
+    transform: scale(1.3);
+}
