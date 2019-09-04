@@ -3,6 +3,8 @@ import store from '../../services/store.js';
 import SignUp from '../auth/SignUp.js';
 import SignIn from '../auth/SignIn.js';
 import { signUp as userSignUp, signIn as userSignIn } from '../../services/auth-api.js';
+import { getColorAPI, toScheme } from '../../services/color-api.js';
+import { randomColor } from '../game/randomize-location.js';
 
 
 function success(user) {
@@ -30,7 +32,7 @@ class AuthApp extends Component {
                     });
             }
         });
-        signUpContainer.appendChild(signUp.renderDOM());
+        signUpContainer.prepend(signUp.renderDOM());
 
         const signIn = new SignIn({
             onSignIn: credentials => {
@@ -45,7 +47,7 @@ class AuthApp extends Component {
                     });
             }
         });
-        signInContainer.appendChild(signIn.renderDOM());
+        signInContainer.prepend(signIn.renderDOM());
         
         const switchToSignIn = dom.querySelector('#signin-button');
         switchToSignIn.addEventListener('click', () => {
@@ -58,26 +60,40 @@ class AuthApp extends Component {
             signUpContainer.classList.remove('no-display');
             signInContainer.classList.add('no-display');
         });
+        const backgroundGradient = document.querySelector('html');
 
+        function loadGradient() {
+            const randomRBG = randomColor();
+            getColorAPI(randomRBG, 6)
+                .then(rawData => {
+                    const colorArray = toScheme(rawData);
+                    console.log(colorArray);
+                    backgroundGradient.style = `background:-webkit-linear-gradient(180deg, ${colorArray[0].color} 0%, ${colorArray[5].color} 100%);`;
+                    console.log(backgroundGradient);
+                });
+        }
+        loadGradient();
     }
 
     renderHTML() {
         return /*html*/`
-        <div>
-            <main id="flex-container">
-                <p class="errors"></p>
-                <section class="no-display" id="signup-container">
-                    <p class="switch">
-                        <button id="signin-button">Already a user?</button>
-                    </p>
-                </section>
-                <section class="" id="signin-container">
-                    <p class="switch">
-                        <button id="signup-button">Make an account</button>
-                    </p>
-                </section>
-            </main>
-        </div>
+        
+            <div id="background">
+                <main id="flex-container">
+                    <p class="errors"></p>
+                    <section class="no-display" id="signup-container">
+                        <p class="switch">
+                            <button id="signin-button">Already a user?</button>
+                        </p>
+                    </section>
+                    <section class="" id="signin-container">
+                        <p class="switch">
+                            <button id="signup-button">Make an account</button>
+                        </p>
+                    </section>
+                </main>
+            </div>
+    
         `;
     }
 }

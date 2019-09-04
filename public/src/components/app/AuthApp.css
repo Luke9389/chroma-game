@@ -1,12 +1,9 @@
-form {
-    max-width: 400px;
-}
-
-main p.switch, main p.errors {
-    margin-top: 20px;
-    text-align: center;
-}
-
+/*
+Display
+font-family: 'Keania One', cursive;
+font-family: 'Monofett', cursive;
+Body
+font-family: 'Nova Flat', cursive; */
 .errors {
     font-family: monospace;
     color: red;
@@ -16,29 +13,101 @@ main p.switch, main p.errors {
     display: none;
 }
 
-main {
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-}
 
 body {
-    background-color: black;
     color: white;
+    font-family: 'Nova Flat', cursive; 
 }
 
-section {
-    margin: 20px;
+
+@media only screen and (max-width: 667px) {
+
+    form {
+        width: 60vw;
+    }
+
+    h1 {
+        font-size: 3em;
+        font-family: 'Monofett', cursive;
+        letter-spacing: .1em;
+        background: -webkit-linear-gradient(180deg, #31193d 0%, #c779fa 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    
+    main p.switch, main p.errors {
+        font-family: 'Nova Flat', cursive; 
+        margin-top: 1em;
+        text-align: center;
+    }
+
+    section, button, input, p {
+        margin: 1em;
+        text-align: center;
+    }
+    section {
+        display: flex;
+        flex-direction: column;
+        align-self: center;
+    }
+
+    main#flex-container {
+        width: 90vw;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        background-color: black;
+        margin-top: 2em;
+        border-radius: 5%;
+    }
+
+
 }
 
-button {
-    margin: 20px;
-}
+@media only screen and (min-width: 668px) {
 
-input {
-    margin: 20px;
-}
+    form {
+        width: 35vw;
+    }
 
-h1 {
-    text-align: center;
+    h1 {
+        font-family: 'Monofett', cursive;
+        font-size: 3.5em;
+        letter-spacing: .1em;
+        background: -webkit-linear-gradient(180deg, #31193d 0%, #c779fa 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    
+    main p.switch, main p.errors {
+        margin-top: 1em;
+        text-align: center;
+        font-family: 'Nova Flat', cursive; 
+    }
+
+    section, button, input, p {
+        font-family: 'Nova Flat', cursive; 
+        margin: 1em;
+        text-align: center;
+    }
+
+    section {
+        display: flex;
+        flex-direction: column;
+        align-self: center;
+    }
+
+    main#flex-container {
+        width: 55vw;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        background-color: black;
+        margin-top: 2em;
+        border-radius: 5%;
+    }
+
+
 }

@@ -23,7 +23,8 @@ class SignIn extends Component {
     renderHTML() {
         return /*html*/`
         <form id="sign-in">
-            <h1>Sign In</h1>
+            <h1>Chroma</h1>
+            <p>Sign In</p>
             <div>
                 <input required name="user-name" type="text" placeholder="Your User Name">
             </div>
