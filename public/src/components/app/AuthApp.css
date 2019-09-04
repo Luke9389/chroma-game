@@ -20,6 +20,44 @@ body {
 }
 
 
+h1.animated#aletter1{
+    animation-delay: .2s;
+}
+h1.animated#letter1{
+    animation-delay: .2s;
+}
+
+
+h1.animated#aletter2{
+    animation-delay: .4s;
+}
+h1.animated#letter2{
+    animation-delay: .4s;
+}
+
+
+h1.animated#aletter3{
+    animation-delay: .6s;
+}
+h1.animated#letter3{
+    animation-delay: .6s;
+}
+
+
+h1.animated#aletter4{
+    animation-delay: .8s;
+}
+h1.animated#letter4{
+    animation-delay: .8s;
+}
+
+
+h1.animated#aletter5{
+    animation-delay: 1s;
+}
+h1.animated#letter5{
+    animation-delay: 1s;
+}
 @media only screen and (max-width: 667px) {
 
     form {
@@ -29,10 +67,7 @@ body {
     h1 {
         font-size: 3em;
         font-family: 'Monofett', cursive;
-        letter-spacing: .1em;
-        background: -webkit-linear-gradient(180deg, #31193d 0%, #c779fa 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+        display: inline-block;
     }
     
     main p.switch, main p.errors {
@@ -74,10 +109,7 @@ body {
     h1 {
         font-family: 'Monofett', cursive;
         font-size: 3.5em;
-        letter-spacing: .1em;
-        background: -webkit-linear-gradient(180deg, #31193d 0%, #c779fa 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+        display: inline-block;
     }
     
     main p.switch, main p.errors {
