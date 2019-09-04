@@ -8,6 +8,7 @@ import { randomColor, randomWholeNum } from '../game/randomize-location.js';
 
 class Gameplay extends Component {
     onRender(dom) {
+        forgetColor();
         function loadColors() {
             const randColor = randomColor();
             const numOfColors = randomWholeNum(2) + 5;
@@ -26,29 +27,36 @@ class Gameplay extends Component {
                     for(let i = 0; i < randomScheme.length; i++) {
                         const colorObject = randomScheme[i];
                         const paletteLocation = dom.querySelector('#palette-section');
-                        const button = document.createElement('button');
-                        button.id = colorObject.location;
-                        button.classList.add('palette-button');
-                        button.style = `background:${colorObject.color}`;
+                        const button = createPaletteButton(colorObject);
                         button.addEventListener('click', () => {
                             if(store.getColor()) {
                                 if(button.style.backgroundColor) {
                                     const oldLocationId = store.getLocation();
                                     const oldLocation = dom.querySelector(`#${oldLocationId}`);
                                     oldLocation.style.backgroundColor = button.style.backgroundColor;
-                                    button.style.backgroundColor = store.getColor();
-                                    store.removeColor();
-                                    store.removeLocation();
+                                    placeColor(button);
+                                    forgetColor();
                                 } else {
-                                    button.style.backgroundColor = store.getColor();
-                                    store.removeColor();
-                                    store.removeLocation();
+                                    placeColor(button);
+                                    forgetColor();
                                 }
                             }
                             else {
                                 store.saveColor(button.style.backgroundColor);
                                 store.saveLocation(button.id);
                             }
+                            let winFlag = 0;
+                            const buttonArr = dom.querySelectorAll('.board-button');
+                            for(let i = 0; i < numOfColors; i++) {
+                                const color = scheme[i].color;
+                                if(`background: ${color};` === `${buttonArr[i].attributes.style.nodeValue}`) {
+                                    winFlag += 1;
+                                }
+                                if(winFlag === numOfColors) {
+                                    console.log('YOU WIN!!!!');
+                                }
+                            }
+
                         });
                         paletteLocation.appendChild(button);
 
@@ -65,18 +73,18 @@ class Gameplay extends Component {
                         const oldLocation = dom.querySelector(`#${oldLocationId}`);
                         oldLocation.style.backgroundColor = button.style.backgroundColor;
                         button.style.backgroundColor = store.getColor();
-                        store.removeColor();
-                        store.removeLocation();
+                        forgetColor();
                     } else {
                         button.style.backgroundColor = store.getColor();
-                        store.removeColor();
-                        store.removeLocation();
+                        forgetColor();
                     }
                 }
                 else {
                     store.saveColor(button.style.backgroundColor);
                     store.saveLocation(button.id);
                 }
+
+
             });
 
         });
@@ -94,5 +102,24 @@ class Gameplay extends Component {
         `;
     }
 }
+
+const forgetColor = () => {
+    store.removeColor();
+    store.removeLocation();
+};
+
+const createPaletteButton = (colorObject) => {
+    const button = document.createElement('button');
+    button.id = colorObject.location;
+    button.classList.add('palette-button');
+    button.style = `background:${colorObject.color}`;
+    return button;
+};
+
+const placeColor = (button) => {
+    button.style.backgroundColor = store.getColor();
+};
+
+
 
 export default Gameplay;

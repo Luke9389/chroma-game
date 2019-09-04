@@ -13,6 +13,8 @@ function success(user) {
 
 class AuthApp extends Component {
     onRender(dom) {
+        store.removeLocation();
+        store.removeColor();
         const errors = dom.querySelector('.errors');
         const signUpContainer = dom.querySelector('#signup-container');
         const signInContainer = dom.querySelector('#signin-container');
