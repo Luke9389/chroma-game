@@ -5,6 +5,8 @@ import store from '../../services/store.js';
 import { getColorAPI, toScheme } from '../../services/color-api.js';
 import randomizeLocation from '../game/randomize-location.js';
 import { randomColor, randomWholeNum } from '../game/randomize-location.js';
+import { createPaletteButton, createBoardButton, checkForWin } from './gamelogic/setGame.js';
+import { forgetColor, placeColor, swapColor, pickUpColor } from './gamelogic/colorActions.js';
 
 class Gameplay extends Component {
     onRender(dom) {
@@ -12,29 +14,21 @@ class Gameplay extends Component {
         function loadColors() {
             const randColor = randomColor();
             const numOfColors = randomWholeNum(2) + 5;
-            for(let i = 0; i < numOfColors; i++) {
-                const boardButton = document.createElement('button');
-                boardButton.id = `b${i}`;
-                boardButton.classList.add('board-button');
-                boardButton.style = 'background:black';
-                const board = dom.querySelector('#board-section');
-                board.appendChild(boardButton);
-            }
+
             getColorAPI(randColor, numOfColors)
                 .then(rawData => {
                     const scheme = toScheme(rawData);
                     const randomScheme = randomizeLocation(scheme);
+                    //make palette buttons
                     for(let i = 0; i < randomScheme.length; i++) {
                         const colorObject = randomScheme[i];
                         const paletteLocation = dom.querySelector('#palette-section');
                         const button = createPaletteButton(colorObject);
+                        //give event listener
                         button.addEventListener('click', () => {
                             if(store.getColor()) {
                                 if(button.style.backgroundColor) {
-                                    const oldLocationId = store.getLocation();
-                                    const oldLocation = dom.querySelector(`#${oldLocationId}`);
-                                    oldLocation.style.backgroundColor = button.style.backgroundColor;
-                                    placeColor(button);
+                                    swapColor(button, dom);
                                     forgetColor();
                                 } else {
                                     placeColor(button);
@@ -42,53 +36,37 @@ class Gameplay extends Component {
                                 }
                             }
                             else {
-                                store.saveColor(button.style.backgroundColor);
-                                store.saveLocation(button.id);
+                                pickUpColor(button);
                             }
-                            let winFlag = 0;
-                            const buttonArr = dom.querySelectorAll('.board-button');
-                            for(let i = 0; i < numOfColors; i++) {
-                                const color = scheme[i].color;
-                                if(`background: ${color};` === `${buttonArr[i].attributes.style.nodeValue}`) {
-                                    winFlag += 1;
-                                }
-                                if(winFlag === numOfColors) {
-                                    console.log('YOU WIN!!!!');
-                                }
-                            }
-
+                            checkForWin(numOfColors, scheme, dom);
                         });
                         paletteLocation.appendChild(button);
-
+                    }
+                    //make board buttons 
+                    for(let i = 0; i < numOfColors; i++) {
+                        const boardButton = createBoardButton(i);
+                        //give event listener
+                        boardButton.addEventListener('click', () => {
+                            if(store.getColor()) {
+                                if(boardButton.style.backgroundColor) {
+                                    swapColor(boardButton, dom);
+                                    forgetColor();
+                                } else {
+                                    placeColor(boardButton);
+                                    forgetColor();
+                                }
+                            }
+                            else {
+                                pickUpColor(boardButton);
+                            }
+                            checkForWin(numOfColors, scheme, dom);
+                        });
+                        const board = dom.querySelector('#board-section');
+                        board.appendChild(boardButton);
                     }
                 });
         }
         loadColors();
-        const buttonArray = dom.querySelectorAll('[class$="button"]');
-        buttonArray.forEach(button => {
-            button.addEventListener('click', () => {
-                if(store.getColor()) {
-                    if(button.style.backgroundColor) {
-                        const oldLocationId = store.getLocation();
-                        const oldLocation = dom.querySelector(`#${oldLocationId}`);
-                        oldLocation.style.backgroundColor = button.style.backgroundColor;
-                        button.style.backgroundColor = store.getColor();
-                        forgetColor();
-                    } else {
-                        button.style.backgroundColor = store.getColor();
-                        forgetColor();
-                    }
-                }
-                else {
-                    store.saveColor(button.style.backgroundColor);
-                    store.saveLocation(button.id);
-                }
-
-
-            });
-
-        });
-
     }
 
     renderHTML() {
@@ -102,24 +80,6 @@ class Gameplay extends Component {
         `;
     }
 }
-
-const forgetColor = () => {
-    store.removeColor();
-    store.removeLocation();
-};
-
-const createPaletteButton = (colorObject) => {
-    const button = document.createElement('button');
-    button.id = colorObject.location;
-    button.classList.add('palette-button');
-    button.style = `background:${colorObject.color}`;
-    return button;
-};
-
-const placeColor = (button) => {
-    button.style.backgroundColor = store.getColor();
-};
-
 
 
 export default Gameplay;
