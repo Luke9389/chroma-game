@@ -1,0 +1,84 @@
+
+
+@media only screen and (max-width: 667px) {
+    .about {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        border: solid red medium;
+        width: 100vw;
+    
+    }
+    
+    .people {
+        display: flex;
+        flex-direction: column;
+        margin: 2em;
+        border: solid red medium;
+        width: 70vw;
+        height: 56vh;
+    }
+    .people #luke {
+        background-color: rgb(151, 3, 3);
+        width: 70vw;
+        height: 35vh;
+    }
+    .people #jose {
+        background-color: rgb(134, 59, 8);
+        width: 70vw;
+        height: 35vh;
+    }
+    .people #pat {
+        background-color: rgb(30, 58, 26);
+        width: 70vw;
+        height: 35vh;
+    }
+    .people  #maeve {
+        background-color: gray;
+        width: 70vw;
+        height: 35vh;
+    }
+}
+
+@media only screen and (min-width: 668px) {
+
+    .about {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        border: solid red medium;
+        width: 90vw;
+    
+    }
+    
+    .people {
+        display: flex;
+        flex-direction: column;
+        margin: 2em;
+        border: solid red medium;
+        width: 30vw;
+        height: 40vh;
+    }
+    .people #luke {
+        background-color: rgb(151, 3, 3);
+        width: 30vw;
+        height: 20vh;
+    }
+    .people #jose {
+        background-color: rgb(134, 59, 8);
+        width: 30vw;
+        height: 20vh;
+    }
+    .people #pat {
+        background-color: rgb(30, 58, 26);
+        width: 30vw;
+        height: 20vh;
+    }
+    .people  #maeve {
+        background-color: gray;
+        width: 30vw;
+        height: 20vh;
+    }
+}
