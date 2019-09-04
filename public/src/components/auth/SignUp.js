@@ -22,7 +22,8 @@ class SignUp extends Component {
     renderHTML() {
         return /*html*/`
         <form id="sign-up">
-            <h1>Sign Up</h1>
+            <h1>Chroma</h1>
+            <p>Sign Up</p>
             <div>
                 <input required name="user-name" type="text" placeholder="Your User Name">
             </div>

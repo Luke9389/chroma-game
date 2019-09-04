@@ -30,7 +30,7 @@ class AuthApp extends Component {
                     });
             }
         });
-        signUpContainer.appendChild(signUp.renderDOM());
+        signUpContainer.prepend(signUp.renderDOM());
 
         const signIn = new SignIn({
             onSignIn: credentials => {
@@ -45,7 +45,7 @@ class AuthApp extends Component {
                     });
             }
         });
-        signInContainer.appendChild(signIn.renderDOM());
+        signInContainer.prepend(signIn.renderDOM());
         
         const switchToSignIn = dom.querySelector('#signin-button');
         switchToSignIn.addEventListener('click', () => {
