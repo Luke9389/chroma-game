@@ -48,6 +48,32 @@ app.use('/api/auth', authRoutes);
 // everything that starts with "/api" below here requires an auth token!
 app.use('/api', ensureAuth);
 
+app.post('/api/rounds', (req, res) => {
+    const round = req.body;
+
+    client.query(`
+       INSERT INTO rounds (colors, count, user_id)
+       VALUES ($1, $2, $3)
+       RETURNING *;
+    `,
+    [round.colors, round.count, round.user_id]
+    )
+        .then(result => {
+            res.json(result.rows[0]);
+        })
+        .catch(err => {
+            if(err.code === '23505') {
+                res.status(400).json({
+                    error: `This round already exists`
+                });
+            }
+            res.status(500).json({
+                error: err.message || err
+            });
+        });
+});
+
+
 
 // Start the server
 app.listen(PORT, () => {

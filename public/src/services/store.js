@@ -1,6 +1,7 @@
 const TOKEN_KEY = 'token';
 const savedColor = 'savedColor';
 const savedLocation = 'savedLocation';
+const userId = 'userId';
 
 export default {
     getToken() {
@@ -14,6 +15,12 @@ export default {
     },
     removeToken() {
         localStorage.removeItem(TOKEN_KEY);
+    },
+    setUserId(user) {
+        localStorage.setItem(userId, user);
+    },
+    getUserId() {
+        return localStorage.getItem(userId);
     },
     getColor() {
         return localStorage.getItem(savedColor);

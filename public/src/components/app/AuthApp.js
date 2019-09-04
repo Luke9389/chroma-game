@@ -9,12 +9,15 @@ import { randomColor } from '../game/randomize-location.js';
 
 function success(user) {
     store.setToken(user.token);
+    store.setUserId(user.id);
     const searchParams = new URLSearchParams(location.search);
     location = searchParams.get('redirect') || '/gameplay.html';
 }
 
 class AuthApp extends Component {
     onRender(dom) {
+        store.removeLocation();
+        store.removeColor();
         const errors = dom.querySelector('.errors');
         const signUpContainer = dom.querySelector('#signup-container');
         const signInContainer = dom.querySelector('#signin-container');
