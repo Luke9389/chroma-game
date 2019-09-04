@@ -7,7 +7,7 @@ import { signUp as userSignUp, signIn as userSignIn } from '../../services/auth-
 
 function success(user) {
     store.setToken(user.token);
-    store.setUserName(user.id);
+    store.setUserId(user.id);
     const searchParams = new URLSearchParams(location.search);
     location = searchParams.get('redirect') || '/gameplay.html';
 }

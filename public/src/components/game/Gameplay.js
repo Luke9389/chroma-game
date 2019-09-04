@@ -18,6 +18,8 @@ class Gameplay extends Component {
             getColorAPI(randColor, numOfColors)
                 .then(rawData => {
                     const scheme = toScheme(rawData);
+                    console.log(scheme);
+                    
                     const randomScheme = randomizeLocation(scheme);
                     //make palette buttons
                     for(let i = 0; i < randomScheme.length; i++) {

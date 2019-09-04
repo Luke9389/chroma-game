@@ -1,3 +1,5 @@
+import store from '../../../services/store.js';
+import { addRound } from '../../../services/chroma-api.js';
 
 export const createPaletteButton = (colorObject) => {
     const button = document.createElement('button');
@@ -24,7 +26,15 @@ export const checkForWin = (numOfColors, scheme, dom) => {
             winFlag += 1;
         }
         if(winFlag === numOfColors) {
+            const savedScheme = scheme.map(obj => obj.color);
+            const round = {
+                colors: savedScheme,
+                count: numOfColors,
+                user_id: store.getUserId()
+            };
+            addRound(round);
             console.log('YOU WIN!!!!');
+
         }
     }
 };
