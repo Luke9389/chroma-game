@@ -35,7 +35,10 @@ export function getColorAPI(color, count) {
     return fetchWithError(url);
 }
 
-export function toScheme(data) {
+export function toScheme(data, bool) {
+    if(bool){
+        data.colors.shift();
+    }
     const colorArray = data.colors;
     const scheme = colorArray.map((color, idx) => {
         return {
