@@ -4,6 +4,7 @@ import Nav from '../nav/Nav.js';
 import { getColorAPI, toScheme } from '../../services/color-api.js';
 import { randomColor, randomWholeNum } from '../game/randomize-location.js';
 import store from '../../services/store.js';
+import { getUserHistory } from '../../services/auth-api.js';
 
 class GameApp extends Component {
     onRender(dom) {
@@ -32,6 +33,29 @@ class GameApp extends Component {
         }
         nextRound();
 
+        function lastRound(page) {
+            const userId = store.getUserId();
+            getUserHistory(userId)
+                .then(data => {
+                    const lastScheme = data.slice(`-${page}`);
+                    return lastScheme[0].colors;
+                })
+                .then(colors => {
+                    const newScheme = [];
+                    for(let i = 0; i < colors.length; i++) {
+                        const obj = {
+                            id: i,
+                            color: colors[i]
+                        };
+                        newScheme.push(obj);
+                    }
+                    props = {
+                        scheme: newScheme,
+                        count: newScheme.length
+                    };
+                    gameplay.update(props);
+                });
+        }
         function refresh() {
             const savedScheme = store.getScheme();
             props = {
@@ -42,6 +66,7 @@ class GameApp extends Component {
         }
         const navProps = {
             nextRound: nextRound,
+            lastRound: lastRound,
             refresh: refresh
         };
 

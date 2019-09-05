@@ -2,6 +2,7 @@ import Component from '../Component.js';
 
 class Nav extends Component {
     onRender(dom) {
+        let backPage = 1;
         const nextButton = dom.querySelector('#next-button');
         nextButton.addEventListener('click', () =>{
             const nextRound = this.props.nextRound;
@@ -12,13 +13,21 @@ class Nav extends Component {
             const refresh = this.props.refresh;
             refresh();
         });
+        const lastButton = dom.querySelector('#last-button');
+        console.log(lastButton);
+        lastButton.addEventListener('click', () => {
+            console.log('last-button');
+            const lastRound = this.props.lastRound;
+            lastRound(backPage);
+            backPage++;
+        });
     }
     renderHTML() {
         return /*html*/`
             <section id="nav">
                 <button class="nav-button" onclick="location.href='./index.html'">⌂</button>
                 <div>
-                    <button disabled class="nav-button">◅</button>
+                    <button class="nav-button" id="last-button">◅</button>
                     <button class="nav-button" id="refresh-button">↺</button>
                     <button class="nav-button" id="next-button">▻</button>
                 </div>

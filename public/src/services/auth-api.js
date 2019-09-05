@@ -51,6 +51,7 @@ export function signIn(credentials) {
     });
 }
 
+// eslint-disable-next-line no-unused-vars
 export function getUserHistory(userId) {
     const url = `${URL}/rounds`;
     return fetchWithError(url);
