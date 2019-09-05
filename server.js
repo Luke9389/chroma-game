@@ -73,7 +73,19 @@ app.post('/api/rounds', (req, res) => {
         });
 });
 
-
+app.get('/api/rounds', (req, res) => {
+    const userId = req.param.id;
+    client.query(`
+    SELECT
+        r colors, 
+        r count, 
+        u user_id
+    FROM rounds r
+    JOIN users u
+    ON r.
+    `,
+    )
+})
 
 // Start the server
 app.listen(PORT, () => {
