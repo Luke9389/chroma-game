@@ -9,19 +9,19 @@ class GameApp extends Component {
     onRender(dom) {
         //api call
         //gameplay props = api stuff OR local storage stuff
-        const numOfColors = randomWholeNum(2) + 5;
-        const ranColor = randomColor();
+        
 
-        let colorProps = {
+        let props = {
             scheme: [],
             count: 0
         };
 
-        const gameplay = new Gameplay(colorProps);
+        const gameplay = new Gameplay(props);
         dom.appendChild(gameplay.renderDOM());
 
         function nextRound() {
-            gameplay.update();
+            const numOfColors = randomWholeNum(2) + 5;
+            const ranColor = randomColor();
             getColorAPI(ranColor, numOfColors)
                 .then(rawData => {
                     const scheme = toScheme(rawData);
@@ -38,11 +38,11 @@ class GameApp extends Component {
 
         function refresh() {
             const savedScheme = store.getScheme();
-            colorProps = {
+            props = {
                 scheme: savedScheme,
                 count: savedScheme.length
             };
-            gameplay.update(colorProps);
+            gameplay.update(props);
         }
         const navProps = {
             nextRound: nextRound,

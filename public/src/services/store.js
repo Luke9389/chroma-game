@@ -48,6 +48,9 @@ export default {
     getScheme() {
         const data = localStorage.getItem(savedScheme);
         return JSON.parse(data);
+    },
+    removeScheme() {
+        localStorage.removeItem(savedScheme);
     }
 };
 
