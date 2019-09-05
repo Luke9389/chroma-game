@@ -1,11 +1,22 @@
 import Component from '../Component.js';
 import { getColorAPI, toScheme } from '../../services/color-api.js';
 import { randomColor } from '../game/randomize-location.js';
-import { getUserHistory } from '../../services/auth-api.js';
+import { getUserHistory, getName } from '../../services/auth-api.js';
 import store from '../../services/store.js';
 
 class UserApp extends Component {
     onRender(dom) {
+        const userId = store.getUserId();
+        const header = dom.querySelector('header');
+        function loadName() {
+            getName(userId)
+                .then(name => {
+                    const h1 = document.createElement('h1');
+                    h1.textContent = `Hi ${name.user_name}`;
+                    header.prepend(h1);
+                });
+        }
+        loadName();
         const backgroundGradient = document.querySelector('html');
         function loadGradient() {
             const randomRBG = randomColor();
@@ -19,7 +30,6 @@ class UserApp extends Component {
         loadGradient();
         const main = dom.querySelector('main');
         function loadUserHistory() {
-            const userId = store.getUserId();
             getUserHistory(userId)
                 .then(rounds => {
                     rounds.forEach((roundObj, i) => {
@@ -44,8 +54,8 @@ class UserApp extends Component {
         return /*html*/`
         <div id="container">
         <header>
-            <h1>Hi Jose</h1>
-            <p>Here is the colors you've sorted</p>
+            
+            <p>Here are the colors you've sorted</p>
         </header>
         <main>
 

@@ -55,3 +55,8 @@ export function getUserHistory(userId) {
     const url = `${URL}/rounds`;
     return fetchWithError(url);
 }
+
+export function getName(userId) {
+    const url = `${URL}/users`;
+    return fetchWithError(url);
+}

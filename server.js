@@ -82,10 +82,22 @@ app.get('/api/rounds', (req, res) => {
     `,
     [userId])
         .then(result => {
-            console.log('result', result)
             res.json(result.rows);
         });
-})
+});
+
+app.get('/api/users', (req, res) => {
+    const userId = req.userId;
+    client.query(`
+    SELECT user_name
+    FROM users
+    WHERE users.id = $1
+    `,
+    [userId])
+        .then(result => {
+            res.json(result.rows[0]);
+        });
+});
 
 // Start the server
 app.listen(PORT, () => {
