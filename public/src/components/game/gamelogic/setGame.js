@@ -17,7 +17,7 @@ export const createBoardButton = (i) => {
     return boardButton;
 };
 
-export const checkForWin = (numOfColors, scheme, dom) => {
+export const checkForWin = (numOfColors, scheme, winBanner, dom) => {
     let winFlag = 0;
     const buttonArr = dom.querySelectorAll('.board-button');
     for(let i = 0; i < numOfColors; i++) {
@@ -33,7 +33,7 @@ export const checkForWin = (numOfColors, scheme, dom) => {
                 user_id: store.getUserId()
             };
             addRound(round);
-            console.log('YOU WIN!!!!');
+            winBanner.classList.toggle('hidden');
 
         }
     }
