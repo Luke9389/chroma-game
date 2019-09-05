@@ -20,6 +20,10 @@
     animation-iteration-count: infinite;
     animation-timing-function: linear;
     animation-duration: 3s;
+    animation-name: winbannerDrop;
+    animation-iteration-count: 1;
+    animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    animation-duration: .5s;
 }
 
 @keyframes move-gradient {
@@ -30,3 +34,19 @@
         background-position: 200% 50%;
     }
 }
+
+@keyframes winbannerDrop  {
+    0% {
+        top: -30vh;
+    }
+    50% {
+        top: 40vh;
+    }
+    75% { 
+        top: 20vh;
+    }
+    100% {
+        top: 30vh;
+    }
+}
+
