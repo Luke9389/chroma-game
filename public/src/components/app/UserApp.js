@@ -21,15 +21,50 @@ class UserApp extends Component {
         function loadUserHistory() {
             const userId = store.getUserId();
             getUserHistory(userId)
-                .then(stuff => {
-                    console.log(stuff);
+                .then(rounds => {
+                    console.log(rounds);
+                    rounds.forEach(round => {
+                        const colorArray = round.colors;
+                        
+                    });
                 });
         }
         loadUserHistory();
     }
     renderHTML() {
         return /*html*/`
-            
+        <div id="container">
+        <header>
+            <h1>Hi Jose</h1>
+            <p>Here is the colors you've sorted</p>
+        </header>
+        <main>
+            <section id="color-set-1">
+                <div class="col-1"></div>
+                <div class="col-2"></div>
+                <div class="col-3"></div>
+                <div class="col-4"></div>
+                <div class="col-5"></div>
+                <div class="col-6"></div>   
+            </section>
+            <section id="color-set-2">
+                <div class="col-1"></div>
+                <div class="col-2"></div>
+                <div class="col-3"></div>
+                <div class="col-4"></div>
+                <div class="col-5"></div>  
+            </section>
+            <section id="color-set-3">
+                <div class="col-1"></div>
+                <div class="col-2"></div>
+                <div class="col-3"></div>
+                <div class="col-4"></div>
+                <div class="col-5"></div>
+                <div class="col-6"></div>   
+                <div class="col-7"></div>  
+            </section>
+    </main>
+    </div>
         `;
     }
 }
