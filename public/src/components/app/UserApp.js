@@ -1,11 +1,22 @@
 import Component from '../Component.js';
 import { getColorAPI, toScheme } from '../../services/color-api.js';
 import { randomColor } from '../game/randomize-location.js';
-import { getUserHistory } from '../../services/auth-api.js';
+import { getUserHistory, getName } from '../../services/auth-api.js';
 import store from '../../services/store.js';
 
 class UserApp extends Component {
-    onRender() {
+    onRender(dom) {
+        const userId = store.getUserId();
+        const header = dom.querySelector('header');
+        function loadName() {
+            getName(userId)
+                .then(name => {
+                    const h1 = document.createElement('h1');
+                    h1.textContent = `Hi ${name.user_name}`;
+                    header.prepend(h1);
+                });
+        }
+        loadName();
         const backgroundGradient = document.querySelector('html');
         function loadGradient() {
             const randomRBG = randomColor();
@@ -17,15 +28,23 @@ class UserApp extends Component {
                 });
         }
         loadGradient();
-
+        const main = dom.querySelector('main');
         function loadUserHistory() {
-            const userId = store.getUserId();
             getUserHistory(userId)
                 .then(rounds => {
-                    console.log(rounds);
-                    rounds.forEach(round => {
-                        const colorArray = round.colors;
+                    rounds.forEach((roundObj, i) => {
+                        const roundSection = document.createElement('section');
+                        roundSection.id = `color-set-${i}`;
+                        main.appendChild(roundSection);
                         
+                        const colorArray = roundObj.colors;
+                        colorArray.forEach((color, j) => {
+                            const colorDiv = document.createElement('dev');
+                            colorDiv.classList.add(`col-${j}`);
+                            colorDiv.style = `background:${color}; flex-grow: 1;`;
+                            roundSection.appendChild(colorDiv);
+                            
+                        });
                     });
                 });
         }
@@ -35,36 +54,13 @@ class UserApp extends Component {
         return /*html*/`
         <div id="container">
         <header>
-            <h1>Hi Jose</h1>
-            <p>Here is the colors you've sorted</p>
+            
+            <p>Here are the colors you've sorted</p>
         </header>
         <main>
-            <section id="color-set-1">
-                <div class="col-1"></div>
-                <div class="col-2"></div>
-                <div class="col-3"></div>
-                <div class="col-4"></div>
-                <div class="col-5"></div>
-                <div class="col-6"></div>   
-            </section>
-            <section id="color-set-2">
-                <div class="col-1"></div>
-                <div class="col-2"></div>
-                <div class="col-3"></div>
-                <div class="col-4"></div>
-                <div class="col-5"></div>  
-            </section>
-            <section id="color-set-3">
-                <div class="col-1"></div>
-                <div class="col-2"></div>
-                <div class="col-3"></div>
-                <div class="col-4"></div>
-                <div class="col-5"></div>
-                <div class="col-6"></div>   
-                <div class="col-7"></div>  
-            </section>
-    </main>
-    </div>
+
+        </main>
+        </div>
         `;
     }
 }

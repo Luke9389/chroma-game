@@ -25,7 +25,7 @@ class Nav extends Component {
     renderHTML() {
         return /*html*/`
             <section id="nav">
-                <button class="nav-button" onclick="location.href='./index.html'">⌂</button>
+                <button class="nav-button" onclick="location.href='./user-page.html'">⌂</button>
                 <div>
                     <button class="nav-button" id="last-button">◅</button>
                     <button class="nav-button" id="refresh-button">↺</button>
