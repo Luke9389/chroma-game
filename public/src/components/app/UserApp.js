@@ -1,6 +1,8 @@
 import Component from '../Component.js';
 import { getColorAPI, toScheme } from '../../services/color-api.js';
 import { randomColor } from '../game/randomize-location.js';
+import { getUserHistory } from '../../services/auth-api.js';
+import store from '../../services/store.js';
 
 class UserApp extends Component {
     onRender() {
@@ -15,6 +17,15 @@ class UserApp extends Component {
                 });
         }
         loadGradient();
+
+        function loadUserHistory() {
+            const userId = store.getUserId();
+            getUserHistory(userId)
+                .then(stuff => {
+                    console.log(stuff);
+                });
+        }
+        loadUserHistory();
     }
     renderHTML() {
         return /*html*/`
