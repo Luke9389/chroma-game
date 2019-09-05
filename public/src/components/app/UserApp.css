@@ -1,0 +1,61 @@
+/*
+Display
+font-family: 'Monofett', cursive;
+Body
+font-family: 'Nova Flat', cursive; */
+
+header {
+    border: red solid medium;
+    text-align: center;
+}
+
+h1 {
+    font-family: 'Monofett', cursive;
+    font-size: 3em;
+    
+}
+
+main {
+    margin: auto;
+    width: 90vw;
+    background-color: black;
+    border-radius: 15px;
+}
+
+section#color-set-1 {
+    margin: auto;
+    padding: 1em;
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    height: 5vh;
+    width: 80vw;
+
+}
+
+section#color-set-1 .col-1 {
+    border-radius: 15px 0 0 15px;
+    flex-grow: 1;
+    background-color: purple;
+}
+section#color-set-1 .col-2 {
+    flex-grow: 1;
+    background-color: blue;
+}
+section#color-set-1 .col-3 {
+    flex-grow: 1;
+    background-color: green;
+}
+section#color-set-1 .col-4 {
+    flex-grow: 1;
+    background-color: yellow;
+}
+section#color-set-1 .col-5 {
+    flex-grow: 1;
+    background-color: orange;
+}
+section#color-set-1 .col-6 {
+    border-radius: 0 15px 15px 0;
+    flex-grow: 1;
+    background-color: red;
+}
