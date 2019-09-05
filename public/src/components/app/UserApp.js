@@ -49,17 +49,25 @@ class UserApp extends Component {
                 });
         }
         loadUserHistory();
+        const logOut = dom.querySelector('.log-out');
+        logOut.addEventListener('click', () => {
+            store.removeToken();
+        });
     }
     renderHTML() {
         return /*html*/`
         <div id="container">
-        <header>
-            
-            <p>Here are the colors you've sorted</p>
-        </header>
-        <main>
+            <header>
+                
+                <p>Here are the colors you've sorted</p>
+            </header>
+            <main>
 
-        </main>
+            </main>
+            <footer>
+            <button class="log-out" onclick="location.href='./index.html'"></button>
+            <a href="/gameplay.html">▶</a>
+            </footer>
         </div>
         `;
     }
