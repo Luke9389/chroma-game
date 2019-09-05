@@ -1,5 +1,5 @@
 .hidden {
-   display: none;
+    display: none;
 }
 
 #win-banner {
@@ -11,7 +11,7 @@
     color: white;
     padding-top: 7vh;
     text-align: center;
-    font-size:  6vh;
+    font-size: 6vh;
     font-family: 'Nova Flat', cursive;
     background-image: linear-gradient(to left, #5EBD3E, #FFB900, #F78200, #E23838, #973999, #009CDF, #5EBD3E);
     background-size: 200vw;
@@ -29,24 +29,16 @@
 @keyframes move-gradient {
     0% {
         background-position: 0% 50%;
-    }
-    100% {
-        background-position: 200% 50%;
-    }
-}
-
-@keyframes winbannerDrop  {
-    0% {
         top: -30vh;
     }
     50% {
         top: 40vh;
     }
-    75% { 
+    75% {
         top: 20vh;
     }
     100% {
+        background-position: 200% 50%;
         top: 30vh;
     }
 }
-
