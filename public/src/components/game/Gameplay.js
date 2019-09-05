@@ -7,6 +7,7 @@ import randomizeLocation from '../game/randomize-location.js';
 // import { randomColor, randomWholeNum } from '../game/randomize-location.js';
 import { createPaletteButton, createBoardButton, checkForWin } from './gamelogic/setGame.js';
 import { forgetColor, placeColor, swapColor, pickUpColor } from './gamelogic/colorActions.js';
+import { playRandomButtonSound } from './gamesounds.js';
 
 class Gameplay extends Component {
     onRender(dom) {
@@ -23,6 +24,7 @@ class Gameplay extends Component {
             const button = createPaletteButton(colorObject);
             //give event listener
             button.addEventListener('click', () => {
+                playRandomButtonSound(dom);
                 if(store.getColor()) {
                     if(button.style.backgroundColor) {
                         swapColor(button, dom);
@@ -42,6 +44,7 @@ class Gameplay extends Component {
             const boardButton = createBoardButton(i);
             //give event listener
             boardButton.addEventListener('click', () => {
+                playRandomButtonSound(dom);
                 if(store.getColor()) {
                     if(boardButton.style.backgroundColor) {
                         swapColor(boardButton, dom);
@@ -77,9 +80,16 @@ class Gameplay extends Component {
         return /*html*/`
                 <section id="gameplay">
                   <section id="palette-section">
-                  </section>
+                </section>
                   <section id="board-section">
-                  </section>
+                </section>
+                  <audio id="button-sound-1" src="./assets/buttonSound1.mp3"></audio>
+                  <audio id="button-sound-2" src="./assets/buttonSound2.mp3"></audio>
+                  <audio id="button-sound-3" src="./assets/buttonSound3.mp3"></audio>
+                  <audio id="button-sound-4" src="./assets/buttonSound4.mp3"></audio>
+                  <audio id="button-sound-5" src="./assets/buttonSound5.mp3"></audio>
+                  <audio id="button-sound-6" src="./assets/buttonSound6.mp3"></audio>
+                  <audio id="silence" src="./assets/silence.mp3"></audio>
                 </section>
             `;
     }
