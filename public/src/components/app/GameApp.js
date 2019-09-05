@@ -7,10 +7,6 @@ import store from '../../services/store.js';
 
 class GameApp extends Component {
     onRender(dom) {
-        //api call
-        //gameplay props = api stuff OR local storage stuff
-        
-
         let props = {
             scheme: [],
             count: 0
@@ -20,22 +16,24 @@ class GameApp extends Component {
         dom.appendChild(gameplay.renderDOM());
 
         function nextRound() {
-            const numOfColors = randomWholeNum(2) + 5;
+            const numOfColors = randomWholeNum(4) + 7;
             const ranColor = randomColor();
             getColorAPI(ranColor, numOfColors)
                 .then(rawData => {
+
                     const scheme = toScheme(rawData);
+
                     store.saveScheme(scheme);
-    
+
                     const colorProps = {
                         scheme: scheme,
-                        count: numOfColors
+                        count: scheme.length
                     };
                     gameplay.update(colorProps);
                 });
         }
         nextRound();
-
+        
         function refresh() {
             const savedScheme = store.getScheme();
             props = {
