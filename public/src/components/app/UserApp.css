@@ -4,7 +4,7 @@ font-family: 'Monofett', cursive;
 Body
 font-family: 'Nova Flat', cursive; */
 
-body {
+#container {
     font-family: 'Nova Flat', cursive;
     display: flex;
     flex-direction: column;
