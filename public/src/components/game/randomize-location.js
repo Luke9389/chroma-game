@@ -17,7 +17,6 @@ function randomizeLocation(arr) {
     }
     random.forEach((colorObject, i) => {
         colorObject.location = `p${i}`; 
-        
     });
     return random;
 }

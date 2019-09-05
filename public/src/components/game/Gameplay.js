@@ -1,10 +1,6 @@
 import Component from '../Component.js';
 import store from '../../services/store.js';
-// import Palette from '../game/Palette.js';
-// import Board from '../game/Board.js';
-// import { getColorAPI, toScheme } from '../../services/color-api.js';
 import randomizeLocation from '../game/randomize-location.js';
-// import { randomColor, randomWholeNum } from '../game/randomize-location.js';
 import { createPaletteButton, createBoardButton, checkForWin } from './gamelogic/setGame.js';
 import { forgetColor, placeColor, swapColor, pickUpColor } from './gamelogic/colorActions.js';
 import { playRandomButtonSound } from './gamesounds.js';
@@ -94,10 +90,6 @@ class Gameplay extends Component {
                 </section>
             `;
     }
-
 }
-
-
-
 
 export default Gameplay;

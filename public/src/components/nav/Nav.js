@@ -14,9 +14,7 @@ class Nav extends Component {
             refresh();
         });
         const lastButton = dom.querySelector('#last-button');
-        console.log(lastButton);
         lastButton.addEventListener('click', () => {
-            console.log('last-button');
             const lastRound = this.props.lastRound;
             lastRound(backPage);
             backPage++;

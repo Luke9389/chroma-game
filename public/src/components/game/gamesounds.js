@@ -9,12 +9,11 @@ export function playRandomButtonSound(dom) {
     const silence = dom.querySelector('#silence');
 
     const randomNumber = Math.floor(Math.random() * 6) + 1;
-    console.log(randomNumber);
     if(randomNumber === 1) { buttonSound1.play(); }
     else if(randomNumber === 2) { buttonSound2.play(); }
     else if(randomNumber === 3) { buttonSound3.play(); }
     else if(randomNumber === 4) { buttonSound4.play(); }
     else if(randomNumber === 5) { buttonSound5.play(); }
-    else { buttonSound6.play(); }
+    else if(randomNumber === 6) { buttonSound6.play(); }
     silence.play();
 }

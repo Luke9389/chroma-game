@@ -1,7 +1,5 @@
 import store from '../../../services/store.js';
 
-
-
 export const forgetColor = () => {
     store.removeColor();
     store.removeLocation();

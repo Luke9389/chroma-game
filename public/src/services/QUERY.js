@@ -16,7 +16,6 @@ const QUERY = {
             const value = queryProps[key];
             searchParams.set(key, value);
         });
-    
         return searchParams.toString();
     }
 };

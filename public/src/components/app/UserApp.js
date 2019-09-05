@@ -24,7 +24,6 @@ class UserApp extends Component {
                 .then(rawData => {
                     const colorArray = toScheme(rawData, false);
                     backgroundGradient.style = `background: -webkit-linear-gradient(180deg, ${colorArray[0].color} 0%, ${colorArray[5].color} 100%);`;
-
                 });
         }
         loadGradient();
@@ -43,7 +42,6 @@ class UserApp extends Component {
                             colorDiv.classList.add(`col-${j}`);
                             colorDiv.style = `background:${color}; flex-grow: 1;`;
                             roundSection.appendChild(colorDiv);
-                            
                         });
                     });
                 });

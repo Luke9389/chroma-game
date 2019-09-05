@@ -34,7 +34,6 @@ export const checkForWin = (numOfColors, scheme, winBanner, dom) => {
             };
             addRound(round);
             winBanner.classList.toggle('hidden');
-
         }
     }
 };

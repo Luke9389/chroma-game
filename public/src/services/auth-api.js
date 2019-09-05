@@ -57,6 +57,7 @@ export function getUserHistory(userId) {
     return fetchWithError(url);
 }
 
+// eslint-disable-next-line no-unused-vars
 export function getName(userId) {
     const url = `${URL}/users`;
     return fetchWithError(url);

@@ -6,7 +6,6 @@ import { signUp as userSignUp, signIn as userSignIn } from '../../services/auth-
 import { getColorAPI, toScheme } from '../../services/color-api.js';
 import { randomColor } from '../game/randomize-location.js';
 
-
 function success(user) {
     store.setToken(user.token);
     store.setUserId(user.id);

@@ -15,7 +15,6 @@ function fetchWithError(url, options) {
         options.headers = options.headers || {};
         options.headers.Authorization = token;
     }
-
     return fetch(url, options)
         .then(response => {
             if(response.ok) {
@@ -28,7 +27,6 @@ function fetchWithError(url, options) {
             }
         });
 }
-
 
 export function getColorAPI(color, count) {
     const url = `${COLOR_API}?rgb=${color}&count=${count}&mode=monochrome`;
