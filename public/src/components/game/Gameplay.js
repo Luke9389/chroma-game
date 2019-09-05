@@ -12,7 +12,9 @@ class Gameplay extends Component {
     onRender(dom) {
         forgetColor();
         const scheme = this.props.scheme;
+        console.log(scheme);
         const count = this.props.count;
+        console.log(count);
         const randomScheme = randomizeLocation(scheme);
         //make palette buttons
         const paletteLocation = dom.querySelector('#palette-section');
@@ -55,6 +57,20 @@ class Gameplay extends Component {
             const board = dom.querySelector('#board-section');
             board.appendChild(boardButton);
         }
+        if(dom.querySelector('#b0')) {
+            const darkestColor = scheme[0].color;
+            console.log('darkestColor:', darkestColor);
+            for(let i = 0; i < count; i++) {
+                const darkButton = dom.querySelector(`#p${i}`);
+                const blackButton = dom.querySelector('#b0');
+                if(darkButton.style.backgroundColor === darkestColor) {
+                    pickUpColor(darkButton);
+                    swapColor(blackButton, dom);
+                    forgetColor();
+                }
+            }
+        }
+
     }
 
     renderHTML() {
