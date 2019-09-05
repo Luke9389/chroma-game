@@ -9,9 +9,9 @@
     height: 20vh;
     transform: skewY(-15deg);
     color: white;
-    padding-top: 3.5rem;
+    padding-top: 7vh;
     text-align: center;
-    font-size: 4.5rem;
+    font-size:  6vh;
     font-family: 'Nova Flat', cursive;
     background-image: linear-gradient(to left, #5EBD3E, #FFB900, #F78200, #E23838, #973999, #009CDF, #5EBD3E);
     background-size: 200vw;
