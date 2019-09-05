@@ -74,17 +74,17 @@ app.post('/api/rounds', (req, res) => {
 });
 
 app.get('/api/rounds', (req, res) => {
-    const userId = req.param.id;
+    const userId = req.userId;
     client.query(`
-    SELECT
-        r colors, 
-        r count, 
-        u user_id
-    FROM rounds r
-    JOIN users u
-    ON r.
+    SELECT *
+    FROM rounds 
+    WHERE rounds.user_id = $1
     `,
-    )
+    [userId])
+        .then(result => {
+            console.log('result', result)
+            res.json(result.rows);
+        });
 })
 
 // Start the server

@@ -50,3 +50,8 @@ export function signIn(credentials) {
         body: JSON.stringify(credentials)
     });
 }
+
+export function getUserHistory(userId) {
+    const url = `${URL}/rounds`;
+    return fetchWithError(url);
+}
