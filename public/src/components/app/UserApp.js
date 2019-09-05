@@ -5,7 +5,7 @@ import { getUserHistory } from '../../services/auth-api.js';
 import store from '../../services/store.js';
 
 class UserApp extends Component {
-    onRender() {
+    onRender(dom) {
         const backgroundGradient = document.querySelector('html');
         function loadGradient() {
             const randomRBG = randomColor();
@@ -17,15 +17,24 @@ class UserApp extends Component {
                 });
         }
         loadGradient();
-
+        const main = dom.querySelector('main');
         function loadUserHistory() {
             const userId = store.getUserId();
             getUserHistory(userId)
                 .then(rounds => {
-                    console.log(rounds);
-                    rounds.forEach(round => {
-                        const colorArray = round.colors;
+                    rounds.forEach((roundObj, i) => {
+                        const roundSection = document.createElement('section');
+                        roundSection.id = `color-set-${i}`;
+                        main.appendChild(roundSection);
                         
+                        const colorArray = roundObj.colors;
+                        colorArray.forEach((color, j) => {
+                            const colorDiv = document.createElement('dev');
+                            colorDiv.classList.add(`col-${j}`);
+                            colorDiv.style = `background:${color}; flex-grow: 1;`;
+                            roundSection.appendChild(colorDiv);
+                            
+                        });
                     });
                 });
         }
@@ -39,32 +48,9 @@ class UserApp extends Component {
             <p>Here is the colors you've sorted</p>
         </header>
         <main>
-            <section id="color-set-1">
-                <div class="col-1"></div>
-                <div class="col-2"></div>
-                <div class="col-3"></div>
-                <div class="col-4"></div>
-                <div class="col-5"></div>
-                <div class="col-6"></div>   
-            </section>
-            <section id="color-set-2">
-                <div class="col-1"></div>
-                <div class="col-2"></div>
-                <div class="col-3"></div>
-                <div class="col-4"></div>
-                <div class="col-5"></div>  
-            </section>
-            <section id="color-set-3">
-                <div class="col-1"></div>
-                <div class="col-2"></div>
-                <div class="col-3"></div>
-                <div class="col-4"></div>
-                <div class="col-5"></div>
-                <div class="col-6"></div>   
-                <div class="col-7"></div>  
-            </section>
-    </main>
-    </div>
+
+        </main>
+        </div>
         `;
     }
 }
