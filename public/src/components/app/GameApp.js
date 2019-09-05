@@ -20,9 +20,7 @@ class GameApp extends Component {
             const ranColor = randomColor();
             getColorAPI(ranColor, numOfColors)
                 .then(rawData => {
-
-                    const scheme = toScheme(rawData);
-
+                    const scheme = toScheme(rawData, true);
                     store.saveScheme(scheme);
 
                     const colorProps = {
@@ -33,7 +31,7 @@ class GameApp extends Component {
                 });
         }
         nextRound();
-        
+
         function refresh() {
             const savedScheme = store.getScheme();
             props = {

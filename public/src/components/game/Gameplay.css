@@ -1,1 +1,32 @@
+.hidden {
+   display: none;
+}
 
+#win-banner {
+    position: absolute;
+    top: 30vh;
+    width: 100vw;
+    height: 20vh;
+    transform: skewY(-15deg);
+    color: white;
+    padding-top: 3.5rem;
+    text-align: center;
+    font-size: 4.5rem;
+    font-family: 'Nova Flat', cursive;
+    background-image: linear-gradient(to left, #5EBD3E, #FFB900, #F78200, #E23838, #973999, #009CDF, #5EBD3E);
+    background-size: 200vw;
+    background-position: 30% 50%;
+    animation-name: move-gradient;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-duration: 3s;
+}
+
+@keyframes move-gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 200% 50%;
+    }
+}
