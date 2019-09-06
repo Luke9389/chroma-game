@@ -14,7 +14,6 @@ class SignUp extends Component {
                 userName: formData.get('user-name'),
                 password: formData.get('password')
             };
-
             onSignUp(user);
         });
     }

@@ -50,7 +50,7 @@ class AuthApp extends Component {
             }
         });
         signInContainer.prepend(signIn.renderDOM());
-        
+
         const switchToSignIn = dom.querySelector('#signin-button');
         switchToSignIn.addEventListener('click', () => {
             signInContainer.classList.remove('no-display');
@@ -73,10 +73,11 @@ class AuthApp extends Component {
                     colorArray.forEach((colorObj, i) => {
                         const chromaLetter = dom.querySelector(`#letter${i}`);
                         const chromaLetter2 = dom.querySelector(`#aletter${i}`);
-                        chromaLetter.style = `color:${colorObj.color}`; 
-                        chromaLetter2.style = `color:${colorObj.color}`;  
+                        chromaLetter.style = `color:${colorObj.color}`;
+                        chromaLetter2.style = `color:${colorObj.color}`;
                     });
-
+                    const aboutUsLink = dom.querySelector('#about-us-link');
+                    aboutUsLink.style = `color:${colorArray[4].color}`;
                 });
         }
         loadGradient();
@@ -92,11 +93,15 @@ class AuthApp extends Component {
                         <p class="switch">
                             <button id="signin-button">Already a user?</button>
                         </p>
+                        <a href="./about-us.html">Made by the Chroma Squad</a>
+
                     </section>
                     <section class="" id="signin-container">
                         <p class="switch">
                             <button id="signup-button">Make an account</button>
                         </p>
+                        <a id="about-us-link" href="./about-us.html">Made by the Chroma Squad</a>
+
                     </section>
                 </main>
             </div>

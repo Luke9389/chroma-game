@@ -1,1 +1,1 @@
-import './rendomize-location.test.js';
+import './randomize-location.test.js';

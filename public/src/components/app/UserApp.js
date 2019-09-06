@@ -54,19 +54,16 @@ class UserApp extends Component {
     }
     renderHTML() {
         return /*html*/`
-        <div id="container">
-            <header>
-                
-                <p>Here are the colors you've sorted</p>
-            </header>
-            <main>
-
-            </main>
-            <footer>
-            <button class="log-out" onclick="location.href='./index.html'"></button>
-            <a href="/gameplay.html">▶</a>
-            </footer>
-        </div>
+            <div id="container">
+                <header>
+                    <p>Here are the colors you've sorted</p>
+                </header>
+                <main></main>
+                <footer>
+                    <button class="log-out" onclick="location.href='./index.html'"></button>
+                    <a href="/gameplay.html">▶</a>
+                </footer>
+            </div>
         `;
     }
 }

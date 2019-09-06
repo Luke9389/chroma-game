@@ -1,9 +1,3 @@
-/*
-Display
-font-family: 'Keania One', cursive;
-font-family: 'Monofett', cursive;
-Body
-font-family: 'Nova Flat', cursive; */
 .errors {
     font-family: monospace;
     color: red;
@@ -13,12 +7,20 @@ font-family: 'Nova Flat', cursive; */
     display: none;
 }
 
-
 body {
     color: white;
     font-family: 'Nova Flat', cursive; 
 }
 
+a {
+    font-size: .8rem;
+}
+#about-us-link:hover{
+    color: white;
+}
+a:visited{
+    color: grey;
+}
 
 h1.animated#aletter1{
     animation-delay: .2s;
@@ -26,32 +28,24 @@ h1.animated#aletter1{
 h1.animated#letter1{
     animation-delay: .2s;
 }
-
-
 h1.animated#aletter2{
     animation-delay: .4s;
 }
 h1.animated#letter2{
     animation-delay: .4s;
 }
-
-
 h1.animated#aletter3{
     animation-delay: .6s;
 }
 h1.animated#letter3{
     animation-delay: .6s;
 }
-
-
 h1.animated#aletter4{
     animation-delay: .8s;
 }
 h1.animated#letter4{
     animation-delay: .8s;
 }
-
-
 h1.animated#aletter5{
     animation-delay: 1s;
 }
@@ -96,8 +90,6 @@ h1.animated#letter5{
         margin-top: 2em;
         border-radius: 5%;
     }
-
-
 }
 
 @media only screen and (min-width: 668px) {
@@ -140,6 +132,4 @@ h1.animated#letter5{
         margin-top: 2em;
         border-radius: 5%;
     }
-
-
 }

@@ -1,4 +1,3 @@
-
 export function playRandomButtonSound(dom) {
     const buttonSound1 = dom.querySelector('#button-sound-1');
     const buttonSound2 = dom.querySelector('#button-sound-2');

@@ -31,6 +31,10 @@
   *see env.example for setting up own .env
   *will also need a live server download
 
+  # Library:
+    Animate CSS
+    url: https://daneden.github.io/animate.css/
+
   # Color api :
   -http://www.thecolorapi.com
   -endpoint:/scheme

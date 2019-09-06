@@ -1,0 +1,87 @@
+div {
+    background-color: rgb(4, 7, 7);
+    width: 90vw;
+    margin: 0 auto;
+    border-radius: 5px;
+    padding-top: .4rem;
+    margin-bottom: 1rem;
+}
+
+h1 {
+    text-align: center;
+    font-size: 2rem;
+    font-family: 'Nova Flat', cursive;
+    background-color: rgb(4, 7, 7);
+    color: white;
+    width: 60vw;
+    margin: 1rem 20vw;
+    padding: 0.5rem;
+    border-radius: 5px;
+}
+
+body {
+    background-image: linear-gradient(to left, #5EBD3E, #FFB900, #F78200, #E23838, #973999, #009CDF, #5EBD3E);
+    background-size: 200vw;
+    background-position: 30% 50%;
+    animation-name: move-gradient;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-duration: 13s;
+}
+
+@keyframes move-gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 200% 50%;
+    }
+}
+
+img {
+    display: block;
+    margin: 0 auto;
+    max-width: 80vw;
+}
+
+a {
+    text-decoration: none;
+    height: 4rem;
+    width: 4rem;
+    font-size: 2.6rem;
+    color: white;
+    background-color: transparent;
+    border: none;
+    margin-top: .1em;
+    transition: all .2s ease-in-out;
+}
+
+a:hover {
+    cursor: pointer;
+    transform: scale(1.3);
+    text-shadow: 0px 0px 12px rgb(201, 201, 201);
+}
+
+#play-button-container {
+    max-width: 4rem;
+    text-align: center;
+    vertical-align: middle;
+    padding-left: .25712345rem;
+    padding-top: 0.7rem;
+    padding-bottom: 0.5rem;
+}
+
+@media(min-width: 850px) {
+    #img-container{
+        max-width: 400px;
+    }
+    section {
+        display: flex;
+        justify-content: space-around;
+    }
+    img{
+        object-fit: contain;
+        height: 80vh;
+        width: 100%;
+    }
+}

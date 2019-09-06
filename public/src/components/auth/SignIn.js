@@ -13,10 +13,9 @@ class SignIn extends Component {
                 userName: formData.get('user-name'),
                 password: formData.get('password')
             };
-
             onSignIn(credentials);
         });
-        
+
     }
 
 
@@ -38,7 +37,7 @@ class SignIn extends Component {
             <div>
                 <input required name="password" type="password" placeholder="Password">
             </div>
-
+            
             <input type="submit">
         </form>
     `;
