@@ -36,7 +36,7 @@ class SignIn extends Component {
             </div>
             
             <div>
-                <input required name="password" type="text" placeholder="Password">
+                <input required name="password" type="password" placeholder="Password">
             </div>
 
             <input type="submit">
