@@ -29,7 +29,7 @@ class Nav extends Component {
                     <button class="nav-button" id="refresh-button">↺</button>
                     <button class="nav-button" id="next-button">▻</button>
                 </div>
-                <button class="nav-button" onclick="location.href='./tutorial.html'">?</button>
+                <button class="nav-button" onclick="location.href='./about-us.html'">?</button>
             </section>
         `;
     }
