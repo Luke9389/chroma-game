@@ -17,7 +17,7 @@ class GameApp extends Component {
         dom.appendChild(gameplay.renderDOM());
 
         function nextRound() {
-            const numOfColors = randomWholeNum(3) + 5;
+            const numOfColors = randomWholeNum(3) + 6;
             const ranColor = randomColor();
             getColorAPI(ranColor, numOfColors)
                 .then(rawData => {
