@@ -15,9 +15,11 @@ function randomizeLocation(arr) {
         
         random.push(randomObject);
     }
+
     random.forEach((colorObject, i) => {
-        colorObject.location = `p${i}`; 
+        colorObject.location = `p${i}`; // why "p0" and not just a index number like 0?
     });
+
     return random;
 }
 
@@ -25,11 +27,15 @@ export function randomWholeNum(num) {
     return Math.floor(Math.random() * num);
 }
 
+function getRandomColorValue() {
+    return randomWholeNum(220) + 30;
+}
+
 export function randomColor() {
-    const r = Math.floor(Math.random() * 220);
-    const g = Math.floor(Math.random() * 220);
-    const b = Math.floor(Math.random() * 220);
-    return `rgb(${r + 30},${g + 30},${b + 30})`;
+    const r = getRandomColorValue();
+    const g = getRandomColorValue();
+    const b = getRandomColorValue();
+    return `rgb(${r},${g},${b})`;
 }
 
 export default randomizeLocation;

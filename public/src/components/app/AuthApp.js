@@ -64,20 +64,25 @@ class AuthApp extends Component {
         });
         const backgroundGradient = document.querySelector('html');
 
+        const chromaLetters = dom.querySelectorAll('.letters');
+
         function loadGradient() {
             const randomRBG = randomColor();
-            getColorAPI(randomRBG, 6)
+            const LENGTH = 6;
+            getColorAPI(randomRBG, LENGTH)
                 .then(rawData => {
                     const colorArray = toScheme(rawData, false);
-                    backgroundGradient.style = `background: -webkit-linear-gradient(180deg, ${colorArray[0].color} 0%, ${colorArray[5].color} 100%);`;
+                    // no need for browser prefix, good support: https://caniuse.com/#search=linear-gradient
+                    // set the specific style, not the whole thing
+                    backgroundGradient.style.background = `linear-gradient(180deg, ${colorArray[0].color} 0%, ${colorArray[5].color} 100%)`;
+                    
                     colorArray.forEach((colorObj, i) => {
-                        const chromaLetter = dom.querySelector(`#letter${i}`);
-                        const chromaLetter2 = dom.querySelector(`#aletter${i}`);
-                        chromaLetter.style = `color:${colorObj.color}`;
-                        chromaLetter2.style = `color:${colorObj.color}`;
+                        const chromaLetter = chromaLetters[i];
+                        chromaLetter.style.color = colorObj.color;
                     });
+
                     const aboutUsLink = dom.querySelector('#about-us-link');
-                    aboutUsLink.style = `color:${colorArray[4].color}`;
+                    aboutUsLink.style.color = colorArray[LENGTH - 2].color;
                 });
         }
         loadGradient();
@@ -88,6 +93,13 @@ class AuthApp extends Component {
         
             <div id="background">
                 <main id="flex-container">
+                    <h1 class="animated bounceInDown" class="letter">C</h1> 
+                    <h1 class="animated bounceInDown" class="letter">h</h1> 
+                    <h1 class="animated bounceInDown" class="letter">r</h1> 
+                    <h1 class="animated bounceInDown" class="letter">o</h1> 
+                    <h1 class="animated bounceInDown" class="letter">m</h1> 
+                    <h1 class="animated bounceInDown" class="letter">a</h1>
+
                     <p class="errors"></p>
                     <section class="no-display" id="signup-container">
                         <p class="switch">

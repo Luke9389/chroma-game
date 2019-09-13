@@ -1,5 +1,5 @@
 import GameApp from './components/app/GameApp.js';
 
 const app = new GameApp();
-const root = document.getElementById('root');
-root.appendChild(app.renderDOM());
+// be consistent, this is how it is in all the other files...
+document.body.prepend(app.renderDOM());

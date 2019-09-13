@@ -8,6 +8,7 @@ class UserApp extends Component {
     onRender(dom) {
         const userId = store.getUserId();
         const header = dom.querySelector('header');
+
         function loadName() {
             getName(userId)
                 .then(name => {
@@ -17,6 +18,7 @@ class UserApp extends Component {
                 });
         }
         loadName();
+
         const backgroundGradient = document.querySelector('html');
         function loadGradient() {
             const randomRBG = randomColor();
@@ -27,6 +29,7 @@ class UserApp extends Component {
                 });
         }
         loadGradient();
+
         const main = dom.querySelector('main');
         function loadUserHistory() {
             getUserHistory(userId)
@@ -47,6 +50,7 @@ class UserApp extends Component {
                 });
         }
         loadUserHistory();
+
         const logOut = dom.querySelector('.log-out');
         logOut.addEventListener('click', () => {
             store.removeToken();

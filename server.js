@@ -62,6 +62,7 @@ app.post('/api/rounds', (req, res) => {
             res.json(result.rows[0]);
         })
         .catch(err => {
+            // when would this happen?
             if(err.code === '23505') {
                 res.status(400).json({
                     error: `This round already exists`
@@ -76,9 +77,9 @@ app.post('/api/rounds', (req, res) => {
 app.get('/api/rounds', (req, res) => {
     const userId = req.userId;
     client.query(`
-    SELECT *
-    FROM rounds 
-    WHERE rounds.user_id = $1
+        SELECT *
+        FROM rounds 
+        WHERE rounds.user_id = $1
     `,
     [userId])
         .then(result => {
@@ -86,12 +87,13 @@ app.get('/api/rounds', (req, res) => {
         });
 });
 
-app.get('/api/users', (req, res) => {
+// better route name...
+app.get('/api/me', (req, res) => {
     const userId = req.userId;
     client.query(`
-    SELECT user_name
-    FROM users
-    WHERE users.id = $1
+        SELECT user_name
+        FROM users
+        WHERE users.id = $1
     `,
     [userId])
         .then(result => {

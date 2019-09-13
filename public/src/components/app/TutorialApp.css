@@ -75,10 +75,12 @@ a:hover {
     #img-container{
         max-width: 400px;
     }
+
     section {
         display: flex;
         justify-content: space-around;
     }
+    
     img{
         object-fit: contain;
         height: 80vh;
