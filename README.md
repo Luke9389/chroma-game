@@ -40,6 +40,9 @@
   -endpoint:/scheme
   -example url:http://www.thecolorapi.com/scheme?rgb=rgb(0,71,171)&mode=triad&count=2
   -example response: 
+
+  Why u no format this code? :(
+
   ``` javascript
   {
 "mode": "triad",
