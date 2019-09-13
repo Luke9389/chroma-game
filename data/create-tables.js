@@ -9,7 +9,7 @@ client.query(`
 
         CREATE TABLE rounds (
                 id SERIAL PRIMARY KEY NOT NULL,
-                colors TEXT[],
+                colors TEXT[], -- you don't need a TEXT, each color is only "rgb(255, 255, 255)" max length, so VARCHAR(32)[]
                 count INTEGER NOT NULL,
                 user_id INTEGER NOT NULL REFERENCES users(id)
         );

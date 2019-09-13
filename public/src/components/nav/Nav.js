@@ -3,23 +3,24 @@ import Component from '../Component.js';
 class Nav extends Component {
     onRender(dom) {
         let backPage = 1;
+
         const nextButton = dom.querySelector('#next-button');
         nextButton.addEventListener('click', () =>{
-            const nextRound = this.props.nextRound;
-            nextRound();
+            this.props.nextRound();
         });
+        
         const refreshButton = dom.querySelector('#refresh-button');
         refreshButton.addEventListener('click', () => {
-            const refresh = this.props.refresh;
-            refresh();
+            this.props.refresh();
         });
+        
         const lastButton = dom.querySelector('#last-button');
         lastButton.addEventListener('click', () => {
-            const lastRound = this.props.lastRound;
-            lastRound(backPage);
+            this.props.lastRound(backPage);
             backPage++;
         });
     }
+    
     renderHTML() {
         return /*html*/`
             <section id="nav">

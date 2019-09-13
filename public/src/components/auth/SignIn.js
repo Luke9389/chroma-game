@@ -22,13 +22,6 @@ class SignIn extends Component {
     renderHTML() {
         return /*html*/`
         <form id="sign-in">
-            <h1 class="animated bounceInDown" id="letter0">C</h1> 
-            <h1 class="animated bounceInDown" id="letter1">h</h1> 
-            <h1 class="animated bounceInDown" id="letter2">r</h1> 
-            <h1 class="animated bounceInDown" id="letter3">o</h1> 
-            <h1 class="animated bounceInDown" id="letter4">m</h1> 
-            <h1 class="animated bounceInDown" id="letter5">a</h1>
-            
             <p>Sign In</p>
             <div>
                 <input required name="user-name" type="text" placeholder="Your User Name">

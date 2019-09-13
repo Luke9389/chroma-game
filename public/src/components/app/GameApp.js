@@ -8,12 +8,10 @@ import { getUserHistory } from '../../services/auth-api.js';
 
 class GameApp extends Component {
     onRender(dom) {
-        let props = {
+        const gameplay = new Gameplay({
             scheme: [],
             count: 0
-        };
-
-        const gameplay = new Gameplay(props);
+        });
         dom.appendChild(gameplay.renderDOM());
 
         function nextRound() {
@@ -21,14 +19,14 @@ class GameApp extends Component {
             const ranColor = randomColor();
             getColorAPI(ranColor, numOfColors)
                 .then(rawData => {
+                    // not sure why this one needs to shift()?
                     const scheme = toScheme(rawData, true);
                     store.saveScheme(scheme);
 
-                    const colorProps = {
+                    gameplay.update({
                         scheme: scheme,
                         count: scheme.length
-                    };
-                    gameplay.update(colorProps);
+                    });
                 });
         }
         nextRound();
@@ -49,28 +47,27 @@ class GameApp extends Component {
                         };
                         newScheme.push(obj);
                     }
-                    props = {
+
+                    gameplay.update({
                         scheme: newScheme,
                         count: newScheme.length
-                    };
-                    gameplay.update(props);
+                    });
                 });
         }
+        
         function refresh() {
             const savedScheme = store.getScheme();
-            props = {
+            gameplay.update({
                 scheme: savedScheme,
                 count: savedScheme.length
-            };
-            gameplay.update(props);
+            });
         }
-        const navProps = {
+
+        const nav = new Nav({
             nextRound: nextRound,
             lastRound: lastRound,
             refresh: refresh
-        };
-
-        const nav = new Nav(navProps);
+        });
         dom.appendChild(nav.renderDOM());
     }
 

@@ -1,5 +1,7 @@
 import Component from '../Component.js';
 
+// consider using data and then mapping to .people html
+
 class AboutApp extends Component {
     renderHTML() {
         return /*html*/ `
